@@ -1,0 +1,47 @@
+.root
+  position: fixed
+  display: flex
+  width: 100%
+  align-items: center
+  justify-content: space-between
+  background-color: #FFF4E2 !important
+  padding: 0 35px 0 10px
+  height: 60px
+  margin-bottom: 14px
+  z-index: 1
+  -webkit-border-radius: 0
+  -moz-border-radius: 0
+  border-radius: 0
+
+.searchBlock
+  position: relative
+  margin-right: 15px
+  display: flex
+
+  svg
+    opacity: 0.3
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+    left: 10px
+
+  input
+    width: 100%
+    height: 40px
+    border: 0
+    border-radius: 10px
+    background-color: rgba(0, 0, 0, 0.05)
+    font-size: 16px
+    padding-left: 40px
+    transition: all 0.1s ease-in-out
+    border: 1px solid transparent
+
+    &:hover,
+    &:focus
+      background-color: #fff
+      border-color: darken(#fff4e2, 15%)
+      box-shadow: 0 0 0 3px rgb(229 160 64 / 12%)
+      outline: none
+      
+.create
+  color: #000

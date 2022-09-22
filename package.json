@@ -9,7 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/base": "^5.0.0-alpha.98",
+    "@mui/icons-material": "^5.10.6",
+    "@mui/material": "^5.10.6",
     "next": "12.3.1",
+    "prettier": "^2.7.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
@@ -17,8 +23,14 @@
     "@types/node": "18.7.18",
     "@types/react": "18.0.20",
     "@types/react-dom": "18.0.6",
-    "eslint": "8.23.1",
+    "autoprefixer": "^10.4.12",
+    "eslint": "^8.23.1",
     "eslint-config-next": "12.3.1",
+    "eslint-config-prettier": "^8.5.0",
+    "lint": "^0.7.0",
+    "postcss": "^8.4.16",
+    "sass": "^1.54.9",
+    "tailwindcss": "^3.1.8",
     "typescript": "4.8.3"
   }
 }
