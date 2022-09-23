@@ -7,6 +7,7 @@ import {
   SmsOutlined as Message,
   NotificationsNoneOutlined as Notification,
   MenuOutlined,
+  ExpandMore,
 } from "@mui/icons-material";
 
 import styles from "./Header.module.sass";
@@ -39,18 +40,21 @@ const Header: React.FC = () => {
         </Button>
       </div>
       <div className="flex items-center">
-        <IconButton>
+        <IconButton className="ml-4">
           <Message />
         </IconButton>
-        <IconButton>
+        <IconButton className="ml-4">
           <Notification />
         </IconButton>
         <Link href="/profile/1">
-          <Avatar
-            className={styles.avatar}
-            alt="Remy Sharp"
-            src="https://leonardo.osnova.io/5ffeac9a-a0e5-5be6-98af-659bfaabd2a6/-/scale_crop/108x108/-/format/webp/"
-          />
+          <a className="flex items-center">
+            <Avatar
+              className={`${styles.avatar} ml-4`}
+              alt="Remy Sharp"
+              src="https://leonardo.osnova.io/5ffeac9a-a0e5-5be6-98af-659bfaabd2a6/-/scale_crop/108x108/-/format/webp/"
+            />
+            <ExpandMore />
+          </a>
         </Link>
       </div>
     </Paper>
