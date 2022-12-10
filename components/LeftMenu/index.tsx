@@ -12,10 +12,10 @@ import { useRouter } from "next/router";
 import { Button } from "@mui/material";
 
 const menu = [
-  { text: "Лента", icon: <FireIcon /> },
-  { text: "Сообщения", icon: <MessageIcon />, path: "/messages" },
-  { text: "Рейтинг RJ", icon: <TrendingIcon />, path: "/rating" },
-  { text: "Подписки", icon: <ListIcon />, path: "/follows" },
+  { text: "Feed", icon: <FireIcon /> },
+  { text: "Massages", icon: <MessageIcon />, path: "/messages" },
+  { text: "Rating RJ", icon: <TrendingIcon />, path: "/rating" },
+  { text: "Subscriptions", icon: <ListIcon />, path: "/follows" },
 ];
 
 export const LeftMenu: React.FC = () => {
@@ -24,9 +24,9 @@ export const LeftMenu: React.FC = () => {
   return (
     <div className={styles.menu}>
       <ul>
-        {menu.map((obj) => (
-          <li key={obj.path}>
-            <Link href="">
+        {menu.map((obj, index) => (
+          <li key={index}>
+            <Link href={`${obj.path}`}>
               <a>
                 <Button
                   variant={router.asPath === obj.path ? "contained" : "text"}

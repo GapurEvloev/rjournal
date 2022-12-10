@@ -6,17 +6,12 @@ import { Post } from "../components/Post";
 
 const Home: NextPage = () => {
   return (
-    <div>
-      <Head>
-        <title>RJournal</title>
-        <meta name="description" content="Pet project - RJournal" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Header />
-      <MainLayout>
-        <Post />
-      </MainLayout>
-    </div>
+    <MainLayout>
+      <Post />
+      <Post />
+      <Post />
+      <Post />
+    </MainLayout>
   );
 };
 
