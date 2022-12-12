@@ -12,7 +12,7 @@ export const useComments = (postId?: number): UseCommentsProps => {
   React.useEffect(() => {
     (async () => {
       try {
-        const arr = await Api().comment.getAll(postId);
+        const arr = await Api().comment.getAll(1 /*postId*/);
         setComments(arr);
       } catch (err) {
         console.warn("Fetch comments", err);

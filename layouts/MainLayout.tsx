@@ -21,7 +21,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
   return (
     <div className={clsx("wrapper", className)}>
       {!hideMenu && (
-        <div className="leftSide">
+        <div className="leftSide mr-5">
           <LeftMenu />
         </div>
       )}

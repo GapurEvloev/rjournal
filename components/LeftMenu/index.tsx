@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import { Button } from "@mui/material";
 
 const menu = [
-  { text: "Feed", icon: <FireIcon /> },
+  { text: "Feed", icon: <FireIcon />, path: "/" },
   { text: "Massages", icon: <MessageIcon />, path: "/messages" },
   { text: "Rating RJ", icon: <TrendingIcon />, path: "/rating" },
   { text: "Subscriptions", icon: <ListIcon />, path: "/follows" },

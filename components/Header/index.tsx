@@ -8,11 +8,23 @@ import {
   NotificationsNoneOutlined as Notification,
   MenuOutlined,
   ExpandMore,
+  AccountCircleOutlined as UserIcon,
 } from "@mui/icons-material";
 
 import styles from "./Header.module.sass";
+import { AuthDialog } from "../AuthDialog";
 
 const Header: React.FC = () => {
+  const [authVisible, setAuthVisible] = React.useState(false);
+
+  const openAuthDialog = () => {
+    setAuthVisible(true);
+  };
+
+  const closeAuthDialog = () => {
+    setAuthVisible(false);
+  };
+
   return (
     <Paper classes={{ root: styles.root }} elevation={4}>
       <div className="flex items-center">
@@ -35,9 +47,13 @@ const Header: React.FC = () => {
           </label>
         </div>
 
-        <Button>
-          <Create classes={{ root: styles.create }} />
-        </Button>
+        <Link href={"/write"}>
+          <a>
+            <Button variant="contained">
+              <Create classes={{ root: styles.create }} />
+            </Button>
+          </a>
+        </Link>
       </div>
       <div className="flex items-center">
         <IconButton className="ml-4">
@@ -56,7 +72,12 @@ const Header: React.FC = () => {
             <ExpandMore />
           </a>
         </Link>
+        <div className={styles.loginButton} onClick={openAuthDialog}>
+          <UserIcon />
+          Войти
+        </div>
       </div>
+      <AuthDialog onClose={closeAuthDialog} visible={authVisible} />
     </Paper>
   );
 };

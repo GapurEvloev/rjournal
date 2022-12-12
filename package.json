@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@editorjs/editorjs": "^2.26.1",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@hookform/resolvers": "^2.9.10",
     "@mui/base": "^5.0.0-alpha.98",
     "@mui/icons-material": "^5.10.6",
     "@mui/material": "^5.10.6",
@@ -20,7 +22,9 @@
     "nookies": "^2.5.2",
     "prettier": "^2.7.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.40.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/node": "18.7.18",
