@@ -74,7 +74,7 @@ const Header: React.FC = () => {
         </Link>
         <div className={styles.loginButton} onClick={openAuthDialog}>
           <UserIcon />
-          Войти
+          Log in
         </div>
       </div>
       <AuthDialog onClose={closeAuthDialog} visible={authVisible} />

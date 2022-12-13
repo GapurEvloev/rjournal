@@ -41,9 +41,9 @@ const Rating: NextPage<RatingPageProps> = ({ users }) => {
           indicatorColor="primary"
           textColor="primary"
         >
-          <Tab label="Август" />
-          <Tab label="За 3 месяцуа" />
-          <Tab label="За всё время" />
+          <Tab label="Last month" />
+          <Tab label="Last 3 months" />
+          <Tab label="All the time" />
         </Tabs>
       </Paper>
 

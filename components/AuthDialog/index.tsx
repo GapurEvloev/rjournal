@@ -32,13 +32,13 @@ export const AuthDialog: React.FC<AuthDialogProps> = ({ onClose, visible }) => {
           <div className={styles.content}>
             <Typography className={styles.title}>
               {formType === "main" ? (
-                "Вход в TJ"
+                "Log in to TJ"
               ) : (
                 <p
                   onClick={() => setFormType("main")}
                   className={styles.backTitle}
                 >
-                  <ArrowBackIcon /> К авторизации
+                  <ArrowBackIcon /> To authorization
                 </p>
               )}
             </Typography>

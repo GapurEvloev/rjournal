@@ -24,13 +24,13 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onOpenRegister }) => {
     resolver: yupResolver(LoginFormSchema),
   });
 
-  const onSubmit = async (dto: LoginDto) => {
+  const onSubmit = async (/*dto: LoginDto*/) => {
     try {
-      const data = await Api().user.login(dto);
-      setCookie(null, "rtoken", data.token, {
-        maxAge: 30 * 24 * 60 * 60,
-        path: "/",
-      });
+      // const data = await Api().user.login(dto);
+      // setCookie(null, "rtoken", data.token, {
+      //   maxAge: 30 * 24 * 60 * 60,
+      //   path: "/",
+      // });
       setErrorMessage("");
       // dispatch(setUserData(data));
     } catch (err) {
@@ -44,15 +44,15 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onOpenRegister }) => {
   return (
     <div>
       <FormProvider {...form}>
-        <form /* onSubmit={form.handleSubmit(onSubmit)} */>
-          <FormField name="email" label="Почта" />
-          <FormField name="password" label="Пароль" />
+        <form onSubmit={form.handleSubmit(onSubmit)}>
+          <FormField name="email" label="Email" />
+          <FormField name="password" label="Password" />
           {errorMessage && (
             <Alert severity="error" className="mb-5">
               {errorMessage}
             </Alert>
           )}
-          <div className="d-flex align-center justify-between">
+          <div className="flex items-center justify-between">
             <Button
               disabled={!form.formState.isValid || form.formState.isSubmitting}
               type="submit"
@@ -60,10 +60,10 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onOpenRegister }) => {
               variant="contained"
               className="mr-4"
             >
-              Войти
+              Log in
             </Button>
             <Button onClick={onOpenRegister} color="primary" variant="text">
-              Регистрация
+              Registration
             </Button>
           </div>
         </form>

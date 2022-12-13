@@ -47,27 +47,28 @@ export const RegisterForm: React.FC<LoginFormProps> = ({
   return (
     <div>
       <FormProvider {...form}>
-        <FormField name="fullName" label="Имя и фамилия" />
-        <FormField name="email" label="Почта" />
-        <FormField name="password" label="Пароль" />
+        <FormField name="fullName" label="Name and surname" />
+        <FormField name="email" label="Email" />
+        <FormField name="password" label="Password" />
         {errorMessage && (
           <Alert severity="error" className="mb-5">
             {errorMessage}
           </Alert>
         )}
         <form>
-          <div className="d-flex align-center justify-between">
+          <div className="flex items-center justify-between">
             <Button
               disabled={!form.formState.isValid || form.formState.isSubmitting}
               onClick={onOpenRegister}
               type="submit"
               color="primary"
+              className="mr-4"
               variant="contained"
             >
-              Зарегистрироваться
+              Register
             </Button>
             <Button onClick={onOpenLogin} color="primary" variant="text">
-              Войти
+              Log in
             </Button>
           </div>
         </form>
