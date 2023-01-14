@@ -13,8 +13,11 @@ import {
 
 import styles from "./Header.module.sass";
 import { AuthDialog } from "../AuthDialog";
+import { useAppSelector } from "../../redux/hooks";
+import { selectUserData } from "../../redux/slices/user";
 
 const Header: React.FC = () => {
+  const userData = useAppSelector(selectUserData);
   const [authVisible, setAuthVisible] = React.useState(false);
 
   const openAuthDialog = () => {
@@ -62,20 +65,23 @@ const Header: React.FC = () => {
         <IconButton className="ml-4">
           <Notification />
         </IconButton>
-        <Link href="/profile/1">
-          <a className="flex items-center">
-            <Avatar
-              className={`${styles.avatar} ml-4`}
-              alt="Remy Sharp"
-              src="https://leonardo.osnova.io/5ffeac9a-a0e5-5be6-98af-659bfaabd2a6/-/scale_crop/108x108/-/format/webp/"
-            />
-            <ExpandMore />
-          </a>
-        </Link>
-        <div className={styles.loginButton} onClick={openAuthDialog}>
-          <UserIcon />
-          Log in
-        </div>
+        {userData ? (
+          <Link href="/profile/1">
+            <a className="flex items-center">
+              <Avatar
+                className={`${styles.avatar} ml-4`}
+                alt="Remy Sharp"
+                src="https://leonardo.osnova.io/5ffeac9a-a0e5-5be6-98af-659bfaabd2a6/-/scale_crop/108x108/-/format/webp/"
+              />
+              <ExpandMore />
+            </a>
+          </Link>
+        ) : (
+          <div className={styles.loginButton} onClick={openAuthDialog}>
+            <UserIcon />
+            Log in
+          </div>
+        )}
       </div>
       <AuthDialog onClose={closeAuthDialog} visible={authVisible} />
     </Paper>

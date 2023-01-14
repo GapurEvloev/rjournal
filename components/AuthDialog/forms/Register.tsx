@@ -8,8 +8,8 @@ import { FormField } from "../../FormField";
 import { CreateUserDto, LoginDto } from "../../../utils/api/types";
 import Alert from "@mui/material/Alert";
 import { Api } from "../../../utils/api";
-// import { setUserData } from "../../../redux/slices/user";
-// import { useAppDispatch } from "../../../redux/hooks";
+import { setUserData } from "../../../redux/slices/user";
+import { useAppDispatch } from "../../../redux/hooks";
 
 interface LoginFormProps {
   onOpenRegister: () => void;
@@ -20,7 +20,7 @@ export const RegisterForm: React.FC<LoginFormProps> = ({
   onOpenRegister,
   onOpenLogin,
 }) => {
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   const [errorMessage, setErrorMessage] = React.useState("");
   const form = useForm({
     mode: "onChange",
@@ -38,7 +38,7 @@ export const RegisterForm: React.FC<LoginFormProps> = ({
 
       setErrorMessage("");
       console.log(data);
-      // dispatch(setUserData(data));
+      dispatch(setUserData(data));
     } catch (err: any) {
       console.warn("Register error", err);
       if (err.response) {

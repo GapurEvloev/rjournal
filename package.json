@@ -16,6 +16,7 @@
     "@mui/base": "^5.0.0-alpha.98",
     "@mui/icons-material": "^5.10.6",
     "@mui/material": "^5.10.6",
+    "@reduxjs/toolkit": "^1.9.1",
     "axios": "^1.2.2",
     "clsx": "^1.2.1",
     "next": "12.3.1",
@@ -24,6 +25,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.42.0",
+    "react-redux": "^8.0.5",
     "yup": "^0.32.11"
   },
   "devDependencies": {
