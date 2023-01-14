@@ -16,14 +16,14 @@
     "@mui/base": "^5.0.0-alpha.98",
     "@mui/icons-material": "^5.10.6",
     "@mui/material": "^5.10.6",
-    "axios": "^1.2.1",
+    "axios": "^1.2.2",
     "clsx": "^1.2.1",
     "next": "12.3.1",
     "nookies": "^2.5.2",
     "prettier": "^2.7.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-hook-form": "^7.40.0",
+    "react-hook-form": "^7.42.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {

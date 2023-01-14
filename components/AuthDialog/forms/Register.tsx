@@ -5,9 +5,9 @@ import { useForm, FormProvider } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { RegisterFormSchema } from "../../../utils/validations";
 import { FormField } from "../../FormField";
-import { UserApi } from "../../../utils/api/user";
-import { CreateUserDto } from "../../../utils/api/types";
+import { CreateUserDto, LoginDto } from "../../../utils/api/types";
 import Alert from "@mui/material/Alert";
+import { Api } from "../../../utils/api";
 // import { setUserData } from "../../../redux/slices/user";
 // import { useAppDispatch } from "../../../redux/hooks";
 
@@ -29,18 +29,21 @@ export const RegisterForm: React.FC<LoginFormProps> = ({
 
   const onSubmit = async (dto: CreateUserDto) => {
     try {
-      // const data = await UserApi.register(dto);
-      // setCookie(null, "authToken", data.token, {
-      //   maxAge: 30 * 24 * 60 * 60,
-      //   path: "/",
-      // });
+      const data = await Api.register(dto);
+
+      setCookie(null, "authToken", data.token, {
+        maxAge: 30 * 24 * 60 * 60,
+        path: "/",
+      });
+
       setErrorMessage("");
+      console.log(data);
       // dispatch(setUserData(data));
-    } catch (err) {
+    } catch (err: any) {
       console.warn("Register error", err);
-      // if (err.response) {
-      //   setErrorMessage(err.response.data.message);
-      // }
+      if (err.response) {
+        setErrorMessage(err.response.data.message);
+      }
     }
   };
 
@@ -55,7 +58,11 @@ export const RegisterForm: React.FC<LoginFormProps> = ({
             {errorMessage}
           </Alert>
         )}
-        <form>
+        <form
+          onSubmit={form?.handleSubmit((formData) =>
+            onSubmit(formData as CreateUserDto)
+          )}
+        >
           <div className="flex items-center justify-between">
             <Button
               disabled={!form.formState.isValid || form.formState.isSubmitting}
