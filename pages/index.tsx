@@ -1,6 +1,8 @@
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import { MainLayout } from "../layouts/MainLayout";
 import { Post } from "../components/Post";
+import { wrapper } from "../redux/store";
+import { Api } from "../utils/api";
 import { PostItem } from "../utils/api/types";
 
 interface HomeProps {
@@ -53,5 +55,11 @@ const Home: NextPage<HomeProps> = () => {
     </MainLayout>
   );
 };
+
+export const getServerSideProps: GetServerSideProps =
+  wrapper.getServerSideProps((store) => async (ctx) => {
+    console.log("12312312312312312312");
+    return { props: {} };
+  });
 
 export default Home;
