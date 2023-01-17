@@ -10,12 +10,12 @@ export type CreateUserDto = {
 } & LoginDto;
 
 export type ResponseUser = {
-  createdAt: string;
   email: string;
   fullName: string;
   id: number;
   commentsCount?: number;
   token: string;
+  createdAt: string;
   updatedAt: string;
 };
 

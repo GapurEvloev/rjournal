@@ -37,7 +37,7 @@ export const RegisterForm: React.FC<LoginFormProps> = ({
       });
 
       setErrorMessage("");
-      console.log(data);
+
       dispatch(setUserData(data));
     } catch (err: any) {
       console.warn("Register error", err);
