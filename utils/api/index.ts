@@ -30,8 +30,12 @@ export const Api = {
     return data;
   },
 
-  async getMe() {
-    const { data } = await instance.get<ResponseUser>("/users/me");
+  async getMe(token: string) {
+    const { data } = await instance.get<ResponseUser>("/users/me", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      }
+    });
     return data;
   },
 };

@@ -28,6 +28,12 @@ const Header: React.FC = () => {
     setAuthVisible(false);
   };
 
+  React.useEffect(() => {
+    if (authVisible && userData) {
+      setAuthVisible(false);
+    }
+  }, [authVisible, userData]);
+
   return (
     <Paper classes={{ root: styles.root }} elevation={4}>
       <div className="flex items-center">

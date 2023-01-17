@@ -1,6 +1,8 @@
 import type { GetServerSideProps, NextPage } from "next";
+import { parseCookies } from "nookies";
 import { MainLayout } from "../layouts/MainLayout";
 import { Post } from "../components/Post";
+import { setUserData } from "../redux/slices/user";
 import { wrapper } from "../redux/store";
 import { Api } from "../utils/api";
 import { PostItem } from "../utils/api/types";
@@ -9,7 +11,7 @@ interface HomeProps {
   posts: PostItem[];
 }
 
-const Home: NextPage<HomeProps> = () => {
+export default function Home(){
   return (
     <MainLayout>
       <Post
@@ -56,10 +58,19 @@ const Home: NextPage<HomeProps> = () => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps =
-  wrapper.getServerSideProps((store) => async (ctx) => {
-    console.log("12312312312312312312");
-    return { props: {} };
-  });
+export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(store => async ctx => {
+  try {
+    const {authToken} = parseCookies(ctx);
 
-export default Home;
+    const userData = await Api.getMe(authToken)
+
+    store.dispatch(setUserData(userData));
+
+    return {
+      props: {}
+    }
+  } catch (error) {
+    console.log("getServerSideProps error", error);
+    return {props: {}}
+  }
+});
