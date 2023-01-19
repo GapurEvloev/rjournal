@@ -1,9 +1,6 @@
-import type { GetServerSideProps, NextPage } from "next";
-import { parseCookies } from "nookies";
+import type { NextPage } from "next";
 import { MainLayout } from "../layouts/MainLayout";
 import { Post } from "../components/Post";
-import { setUserData } from "../redux/slices/user";
-import { wrapper } from "../redux/store";
 import { Api } from "../utils/api";
 import { PostItem } from "../utils/api/types";
 
@@ -11,64 +8,40 @@ interface HomeProps {
   posts: PostItem[];
 }
 
-export default function Home(){
+const Home: NextPage<HomeProps> = ({ posts }) => {
   return (
     <MainLayout>
-      <Post
-        id={1}
-        title={"The cat lay down to rest and became the hero of memes"}
-        description={
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquid architecto asperiores aut consequuntur dolor et fugit impedit ipsa itaque laboriosam minus mollitia, nihil quam, reprehenderit, sit tempora tenetur ullam.`"
-        }
-        imageUrl={
-          "https://leonardo.osnova.io/a21ca5a9-d95b-560d-9a6f-9fa87eff7fcd/-/preview/600/-/format/webp/"
-        }
-      />
-      <Post
-        id={1}
-        title={"The cat lay down to rest and became the hero of memes"}
-        description={
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquid architecto asperiores aut consequuntur dolor et fugit impedit ipsa itaque laboriosam minus mollitia, nihil quam, reprehenderit, sit tempora tenetur ullam.`"
-        }
-        imageUrl={
-          "https://leonardo.osnova.io/a21ca5a9-d95b-560d-9a6f-9fa87eff7fcd/-/preview/600/-/format/webp/"
-        }
-      />
-      <Post
-        id={1}
-        title={"The cat lay down to rest and became the hero of memes"}
-        description={
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquid architecto asperiores aut consequuntur dolor et fugit impedit ipsa itaque laboriosam minus mollitia, nihil quam, reprehenderit, sit tempora tenetur ullam.`"
-        }
-        imageUrl={
-          "https://leonardo.osnova.io/a21ca5a9-d95b-560d-9a6f-9fa87eff7fcd/-/preview/600/-/format/webp/"
-        }
-      />
-      <Post
-        id={1}
-        title={"The cat lay down to rest and became the hero of memes"}
-        description={
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquid architecto asperiores aut consequuntur dolor et fugit impedit ipsa itaque laboriosam minus mollitia, nihil quam, reprehenderit, sit tempora tenetur ullam.`"
-        }
-        imageUrl={
-          "https://leonardo.osnova.io/a21ca5a9-d95b-560d-9a6f-9fa87eff7fcd/-/preview/600/-/format/webp/"
-        }
-      />
+      {
+        posts.map((post) => {
+          console.log(post)
+          return <Post
+            key={post.id}
+            id={post.id}
+            title={post.title}
+            description={post.description}
+          />
+        })
+      }
     </MainLayout>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(store => async ctx => {
+export const getServerSideProps = async (ctx: any) => {
   try {
-    const userData = await Api(ctx).user.getMe()
-
-    store.dispatch(setUserData(userData));
-
+    const posts = await Api().post.getAll();
     return {
-      props: {}
-    }
-  } catch (error) {
-    console.log("getServerSideProps error", error);
-    return {props: {}}
+      props: {
+        posts,
+      },
+    };
+  } catch (err) {
+    console.log(err);
   }
-});
+  return {
+    props: {
+      posts: null,
+    },
+  };
+};
+
+export default Home;

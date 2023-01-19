@@ -1,3 +1,4 @@
+import { OutputData } from "@editorjs/editorjs";
 import React from "react";
 import { Paper, Typography } from "@mui/material";
 import Link from "next/link";
@@ -10,6 +11,7 @@ interface PostProps {
   title: string;
   id: number;
   description: string;
+  body?: OutputData["blocks"];
   imageUrl?: string;
 }
 
@@ -29,10 +31,10 @@ export const Post: React.FC<PostProps> = ({
       <Typography className="mt-2.5 mb-4">{description}</Typography>
       {imageUrl && (
         <Image
-          src="https://leonardo.osnova.io/a21ca5a9-d95b-560d-9a6f-9fa87eff7fcd/-/preview/600/-/format/webp/"
+          src={imageUrl}
           height={664}
           width={600}
-          alt="The cat lay down to rest and became the hero of memes"
+          alt={title}
         />
       )}
       <PostActions />
