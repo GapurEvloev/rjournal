@@ -6,9 +6,6 @@ import { Api } from "../../utils/api";
 import { PostItem } from "../../utils/api/types";
 import { useRouter } from "next/router";
 
-// const Editor = dynamic(() => import("../Editor").then((m) => m.Editor), {
-//   ssr: false,
-// });
 const Editor = dynamic(() => import("../Editor").then((mod) => mod.Editor), {
   ssr: false,
 });

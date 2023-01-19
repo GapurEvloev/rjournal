@@ -25,9 +25,9 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onOpenRegister }) => {
 
   const onSubmit = async (dto: LoginDto) => {
     try {
-      const data = await Api.login(dto);
+      const data = await Api().user.login(dto);
 
-      setCookie(null, "authToken", data.token, {
+      setCookie(null, "rjtoken", data.token, {
         maxAge: 30 * 24 * 60 * 60,
         path: "/",
       });

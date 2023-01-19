@@ -60,9 +60,7 @@ export default function Home(){
 
 export const getServerSideProps: GetServerSideProps = wrapper.getServerSideProps(store => async ctx => {
   try {
-    const {authToken} = parseCookies(ctx);
-
-    const userData = await Api.getMe(authToken)
+    const userData = await Api(ctx).user.getMe()
 
     store.dispatch(setUserData(userData));
 

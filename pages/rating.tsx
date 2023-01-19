@@ -13,7 +13,7 @@ import {
 import { MainLayout } from "../layouts/MainLayout";
 import { FollowButton } from "../components/FollowButton";
 import { Api } from "../utils/api";
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from 'next';
 import { ResponseUser } from "../utils/api/types";
 
 interface RatingPageProps {
@@ -86,9 +86,9 @@ const Rating: NextPage<RatingPageProps> = ({ users }) => {
   );
 };
 
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   try {
-    const users = await Api().user.getAll();
+    const users = Api(ctx).user.getMe();
     return {
       props: {
         users,
