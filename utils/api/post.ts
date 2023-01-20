@@ -22,7 +22,7 @@ export const PostApi = (instance: AxiosInstance) => ({
     return data;
   },
   async search(query: SearchPostDto) {
-    const { data } = await instance.get<{ items: PostItem[]; totla: number }>('/posts/search', { params: query });
+    const { data } = await instance.get<{ items: PostItem[]; total: number }>('/posts/search', { params: query });
     return data;
   },
   async getOne(id: number) {

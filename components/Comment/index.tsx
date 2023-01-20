@@ -38,13 +38,13 @@ export const Comment: React.FC<CommentPostProps> = ({
   };
 
   const handleClickRemove = async () => {
-    if (window.confirm("Удалить комментарий?")) {
+    if (window.confirm("Delete comment?")) {
       try {
         await Api().comment.remove(id);
         onRemove(id);
       } catch (err) {
         console.warn("Error remove comment", err);
-        alert("Не удалось удалить комментарий");
+        alert("Failed to delete comment");
       } finally {
         handleClose();
       }
@@ -61,7 +61,7 @@ export const Comment: React.FC<CommentPostProps> = ({
       <Typography className={styles.text}>{text}</Typography>
       {user.id === currentUserId && (
         <>
-          <span className={styles.replyBtn}>Ответить</span>
+          <span className={styles.replyBtn}>Reply</span>
           <IconButton onClick={handleClick}>
             <MoreIcon />
           </IconButton>
@@ -72,8 +72,8 @@ export const Comment: React.FC<CommentPostProps> = ({
             onClose={handleClose}
             keepMounted
           >
-            <MenuItem onClick={handleClickRemove}>Удалить</MenuItem>
-            <MenuItem onClick={handleClose}>Редактировать</MenuItem>
+            <MenuItem onClick={handleClickRemove}>Remove</MenuItem>
+            <MenuItem onClick={handleClose}>Edit</MenuItem>
           </Menu>
         </>
       )}

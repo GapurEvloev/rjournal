@@ -17,37 +17,37 @@ const WritePage: NextPage<WritePageProps> = ({ post }) => {
   );
 };
 
-// export const getServerSideProps: GetServerSideProps = async (ctx) => {
-//   try {
-//     const id = ctx.params.id;
-//     const post = await Api(ctx).post.getOne(+id);
-//     const user = await Api(ctx).user.getMe();
-//
-//     if (post.user.id !== user.id) {
-//       return {
-//         props: {},
-//         redirect: {
-//           destination: '/',
-//           permanent: false,
-//         },
-//       };
-//     }
-//
-//     return {
-//       props: {
-//         post,
-//       },
-//     };
-//   } catch (err) {
-//     console.log('Write page', err);
-//     return {
-//       props: {},
-//       redirect: {
-//         destination: '/',
-//         permanent: false,
-//       },
-//     };
-//   }
-// };
-//
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  try {
+    const id = ctx.params?.id;
+    const post = await Api(ctx).post.getOne(+id!);
+    const user = await Api(ctx).user.getMe();
+
+    if (post.user.id !== user.id) {
+      return {
+        props: {},
+        redirect: {
+          destination: '/',
+          permanent: false,
+        },
+      };
+    }
+
+    return {
+      props: {
+        post,
+      },
+    };
+  } catch (err) {
+    console.log('Write page', err);
+    return {
+      props: {},
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
+};
+
 export default WritePage;
