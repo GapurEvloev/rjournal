@@ -62,7 +62,7 @@ export const Comment: React.FC<CommentPostProps> = ({
       {user.id === currentUserId && (
         <>
           <span className={styles.replyBtn}>Reply</span>
-          <IconButton onClick={handleClick}>
+          <IconButton size="small" onClick={handleClick}>
             <MoreIcon />
           </IconButton>
           <Menu

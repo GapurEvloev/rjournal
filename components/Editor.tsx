@@ -10,9 +10,9 @@ export const Editor: React.FC<EditorProps> = ({ onChange, initialBlocks }) => {
   React.useEffect(() => {
     const editor = new EditorJS({
       holder: "editor",
-      // data: {
-      //   blocks: initialBlocks,
-      // },
+      data: {
+        blocks: initialBlocks!,
+      },
       placeholder: "Введите текст вашей статьи",
       async onChange() {
         const { blocks } = await editor.save();
