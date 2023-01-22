@@ -42,7 +42,7 @@ export const FullPost: React.FC<FullPostProps> = ({ title, blocks }) => {
               </Button>
               <Button variant="contained">
                 <UserAddIcon />
-                <b className="ml-2.5">Подписаться</b>
+                <b className="ml-2.5">Subscribe</b>
               </Button>
             </div>
           </div>

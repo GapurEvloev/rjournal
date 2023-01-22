@@ -1,6 +1,5 @@
 import { AxiosInstance } from 'axios';
-import { OutputData } from '@editorjs/editorjs';
-import { CommentItem, PostItem } from './types';
+import { CommentItem } from './types';
 
 type CreateCommentDto = {
   postId: number;

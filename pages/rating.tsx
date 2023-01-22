@@ -12,8 +12,7 @@ import {
 
 import { MainLayout } from "../layouts/MainLayout";
 import { FollowButton } from "../components/FollowButton";
-import { Api } from "../utils/api";
-import { GetServerSideProps, NextPage } from 'next';
+import { NextPage } from 'next';
 import { ResponseUser } from "../utils/api/types";
 
 interface RatingPageProps {
@@ -28,12 +27,10 @@ const Rating: NextPage<RatingPageProps> = ({ users }) => {
           variant="h5"
           style={{ fontWeight: "bold", fontSize: 30, marginBottom: 6 }}
         >
-          Рейтинг сообществ и блогов
+          Rating of communities and blogs
         </Typography>
         <Typography style={{ fontSize: 15 }}>
-          Десять лучших авторов и комментаторов, а также администраторы первых
-          десяти сообществ из рейтинга по итогам месяца бесплатно получают
-          Plus-аккаунт на месяц.
+          The top ten authors and commentators, as well as administrators of the first ten communities in the ranking at the end of the month receive a free Plus account for a month.
         </Typography>
         <Tabs
           className="mt-2.5"
@@ -86,22 +83,22 @@ const Rating: NextPage<RatingPageProps> = ({ users }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  try {
-    const users = Api(ctx).user.getMe();
-    return {
-      props: {
-        users,
-      },
-    };
-  } catch (err) {
-    console.log(err);
-  }
-  return {
-    props: {
-      users: null,
-    },
-  };
-};
+// export const getServerSideProps: GetServerSideProps = async (ctx) => {
+//   try {
+//     const users = Api(ctx).user.getMe();
+//     return {
+//       props: {
+//         users,
+//       },
+//     };
+//   } catch (err) {
+//     console.log(err);
+//   }
+//   return {
+//     props: {
+//       users: null,
+//     },
+//   };
+// };
 
 export default Rating;

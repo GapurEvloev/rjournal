@@ -1,10 +1,10 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ResponseUser } from "../../utils/api/types";
-import { RootState } from "../store";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { ResponseUser } from '../../utils/api/types';
+import { RootState } from '../store';
 import { HYDRATE } from 'next-redux-wrapper';
 
 export interface UserState {
-  data: ResponseUser | null;
+  data?: ResponseUser | null;
 }
 
 const initialState: UserState = {
@@ -12,7 +12,7 @@ const initialState: UserState = {
 };
 
 export const userSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState,
   reducers: {
     setUserData: (state, action: PayloadAction<ResponseUser>) => {

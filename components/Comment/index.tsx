@@ -8,11 +8,7 @@ import { Api } from "../../utils/api";
 
 interface CommentPostProps {
   id: number;
-  user: {
-    id: number;
-    fullname: string;
-    avatarUrl: string;
-  };
+  user: ResponseUser;
   text: string;
   createdAt: string;
   currentUserId: number;
@@ -54,8 +50,8 @@ export const Comment: React.FC<CommentPostProps> = ({
   return (
     <div className={styles.comment}>
       <div className={styles.userInfo}>
-        <Avatar style={{ marginRight: 10 }}>{user.fullname[0]}</Avatar>
-        <b>{user.fullname}</b>
+        <Avatar style={{ marginRight: 10 }}>{user.fullName[0]}</Avatar>
+        <b>{user.fullName}</b>
         <span>{createdAt}</span>
       </div>
       <Typography className={styles.text}>{text}</Typography>
