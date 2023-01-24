@@ -13,7 +13,6 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
     <MainLayout>
       {
         posts.map((post) => {
-          console.log(post)
           return <Post
             key={post.id}
             id={post.id}
@@ -26,7 +25,7 @@ const Home: NextPage<HomeProps> = ({ posts }) => {
   );
 };
 
-export const getServerSideProps = async (ctx: any) => {
+export const getServerSideProps = async () => {
   try {
     const posts = await Api().post.getAll();
     return {

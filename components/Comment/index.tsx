@@ -46,7 +46,7 @@ export const Comment: React.FC<CommentPostProps> = ({
       }
     }
   };
-  console.log(user.id, currentUserId)
+
   return (
     <div className={styles.comment}>
       <div className={styles.userInfo}>
