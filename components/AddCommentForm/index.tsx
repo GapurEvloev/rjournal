@@ -54,7 +54,7 @@ export const AddCommentForm: React.FC<AddCommentFormProps> = ({ postId, onSucces
           variant="contained"
           color="primary"
         >
-          Опубликовать
+          Publish
         </Button>
       )}
     </div>

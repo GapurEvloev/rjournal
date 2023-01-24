@@ -47,7 +47,7 @@ export const WriteForm: React.FC<WriteFormProps> = ({ data }) => {
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         classes={{ root: styles.titleField }}
-        placeholder="Заголовок"
+        placeholder="Title"
       />
       <div className={styles.editor}>
         {Editor && (
@@ -63,7 +63,7 @@ export const WriteForm: React.FC<WriteFormProps> = ({ data }) => {
         variant="contained"
         color="primary"
       >
-        {data ? "Сохранить" : "Опубликовать"}
+        {data ? "Save" : "Publish"}
       </Button>
     </div>
   );

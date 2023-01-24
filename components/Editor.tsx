@@ -13,7 +13,7 @@ export const Editor: React.FC<EditorProps> = ({ onChange, initialBlocks }) => {
       data: {
         blocks: initialBlocks!,
       },
-      placeholder: "Введите текст вашей статьи",
+      placeholder: "Enter the text of your article",
       async onChange() {
         const { blocks } = await editor.save();
         onChange(blocks);

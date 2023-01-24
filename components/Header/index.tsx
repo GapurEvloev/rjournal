@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Avatar, Button, IconButton, Paper } from "@mui/material";
+import { Avatar, Button, IconButton, List, ListItemButton, Paper } from "@mui/material";
 import {
   Search,
   Create,
@@ -10,6 +10,8 @@ import {
   ExpandMore,
   AccountCircleOutlined as UserIcon,
 } from "@mui/icons-material";
+import { Api } from "../../utils/api";
+import { PostItem } from "../../utils/api/types";
 
 import styles from "./Header.module.sass";
 import { AuthDialog } from "../AuthDialog";
@@ -19,6 +21,8 @@ import { selectUserData } from "../../redux/slices/user";
 const Header: React.FC = () => {
   const userData = useAppSelector(selectUserData);
   const [authVisible, setAuthVisible] = React.useState(false);
+  const [searchValue, setSearchValue] = React.useState("");
+  const [posts, setPosts] = React.useState<PostItem[]>([]);
 
   const openAuthDialog = () => {
     setAuthVisible(true);
@@ -33,6 +37,16 @@ const Header: React.FC = () => {
       setAuthVisible(false);
     }
   }, [authVisible, userData]);
+
+  const handleChangeInput = async (e: React.FormEvent<HTMLInputElement>) => {
+    setSearchValue(e.currentTarget.value);
+    try {
+      const { items } = await Api().post.search({title: e.currentTarget.value });
+      setPosts(items);
+    } catch (error) {
+      console.warn(error);
+    }
+  }
 
   return (
     <Paper classes={{ root: styles.root }} elevation={4}>
@@ -51,8 +65,21 @@ const Header: React.FC = () => {
         </Link>
         <div className={styles.searchBlock}>
           <label>
-            <input type="text" placeholder="Search" />
+            <input value={searchValue} onChange={handleChangeInput} type="text" placeholder="Search" />
             <Search />
+            {posts.length > 0 && (
+              <Paper className={styles.searchBlockPopup}>
+                <List>
+                  {posts.map((obj) => (
+                    <Link key={obj.id} href={`/news/${obj.id}`}>
+                      <a>
+                        <ListItemButton>{obj.title}</ListItemButton>
+                      </a>
+                    </Link>
+                  ))}
+                </List>
+              </Paper>
+            )}
           </label>
         </div>
 

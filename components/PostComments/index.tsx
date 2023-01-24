@@ -27,9 +27,9 @@ export const PostComments: React.FC<PostComments> = ({ postId }) => {
   return (
     <Paper elevation={0} className="mt-10 p-8">
       <div className="container">
-        <Typography variant="h6" className="mb-5">
-          {42} комментария
-        </Typography>
+        {comments.length > 0 && <Typography variant="h6" className="mb-5">
+          {comments.length} {comments.length > 1 ? "comments" : "comment"}
+        </Typography>}
         <Tabs
           onChange={(_, newValue) => setActiveTab(newValue)}
           className="mt-5"
@@ -37,8 +37,8 @@ export const PostComments: React.FC<PostComments> = ({ postId }) => {
           indicatorColor="primary"
           textColor="primary"
         >
-          <Tab label="Популярные" />
-          <Tab label="По порядку" />
+          <Tab label="Popular" />
+          <Tab label="By order" />
         </Tabs>
         <Divider />
         {userData && (

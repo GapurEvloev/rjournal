@@ -43,8 +43,8 @@ export const Index: React.FC<CommentPostProps> = ({ user, post, text }) => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Удалить</MenuItem>
-        <MenuItem onClick={handleClose}>Редактировать</MenuItem>
+        <MenuItem onClick={handleClose}>Remove</MenuItem>
+        <MenuItem onClick={handleClose}>Edit</MenuItem>
       </Menu>
     </Paper>
   );

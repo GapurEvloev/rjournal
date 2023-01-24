@@ -10,7 +10,7 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    // Кастомизация стилей по умолчинию для кнопки
+    // Customizing the default styles for the button
     plugin(function ({ addBase, config }) {
       addBase({
         "button, [type='button'], [type='reset'], [type='submit']": {

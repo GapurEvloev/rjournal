@@ -13,10 +13,11 @@ import {
 import { MainLayout } from "../layouts/MainLayout";
 import { FollowButton } from "../components/FollowButton";
 import { NextPage } from 'next';
+import { Api } from "../utils/api";
 import { ResponseUser } from "../utils/api/types";
 
 interface RatingPageProps {
-  users: ResponseUser[] | undefined;
+  users?: ResponseUser[];
 }
 
 const Rating: NextPage<RatingPageProps> = ({ users }) => {
@@ -54,28 +55,18 @@ const Rating: NextPage<RatingPageProps> = ({ users }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow key={"12231"}>
-              <TableCell component="th" scope="row">
-                <span className="mr-2">{"12231"}</span>
-                {"12231"}
-              </TableCell>
-              <TableCell align="right">{"12231"}</TableCell>
-              <TableCell align="right">
-                <FollowButton />
-              </TableCell>
-            </TableRow>
-            {/* {users.map((obj) => (
+            {users?.map((obj) => (
               <TableRow key={obj.id}>
                 <TableCell component="th" scope="row">
                   <span className="mr-7">{obj.id}</span>
                   {obj.fullName}
                 </TableCell>
-                <TableCell align="right">{obj.commentsCount * 2}</TableCell>
+                <TableCell align="right">{obj.commentsCount && obj.commentsCount * 2}</TableCell>
                 <TableCell align="right">
                   <FollowButton />
                 </TableCell>
               </TableRow>
-            ))} */}
+            ))}
           </TableBody>
         </Table>
       </Paper>
@@ -83,22 +74,22 @@ const Rating: NextPage<RatingPageProps> = ({ users }) => {
   );
 };
 
-// export const getServerSideProps: GetServerSideProps = async (ctx) => {
-//   try {
-//     const users = Api(ctx).user.getMe();
-//     return {
-//       props: {
-//         users,
-//       },
-//     };
-//   } catch (err) {
-//     console.log(err);
-//   }
-//   return {
-//     props: {
-//       users: null,
-//     },
-//   };
-// };
+export const getServerSideProps = async () => {
+  try {
+    const users = await Api().user.getAll();
+    return {
+      props: {
+        users,
+      },
+    };
+  } catch (err) {
+    console.log(err);
+  }
+  return {
+    props: {
+      users: null,
+    },
+  };
+};
 
 export default Rating;

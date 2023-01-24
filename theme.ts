@@ -21,7 +21,7 @@ export const theme = createTheme({
         },
       },
     },
-    // Кастомизация стилей по умолчинию для кнопки
+    // Customizing the default styles for the button
     MuiButton: {
       styleOverrides: {
         // Name of the slot
