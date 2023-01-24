@@ -52,7 +52,7 @@ export const PostComments: React.FC<PostComments> = ({ postId }) => {
             user={obj.user}
             text={obj.text}
             createdAt={obj.createdAt}
-            currentUserId={1}
+            currentUserId={userData?.id}
             onRemove={onRemoveComment}
           />
         ))}

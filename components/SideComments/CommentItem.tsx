@@ -5,16 +5,9 @@ import { PostItem, ResponseUser } from "../../utils/api/types";
 import { Avatar } from "@mui/material";
 
 interface CommentItemProps {
-  user: {
-    id: number;
-    fullname: string;
-    avatarUrl: string;
-  };
+  user: ResponseUser;
   text: string;
-  post: {
-    id: number;
-    title: string;
-  };
+  post: PostItem;
 }
 
 export const CommentItem: React.FC<CommentItemProps> = ({
@@ -25,10 +18,10 @@ export const CommentItem: React.FC<CommentItemProps> = ({
   return (
     <div className={styles.commentItem}>
       <div className={styles.userInfo}>
-        <Avatar style={{ marginRight: 10 }}>{user.fullname[0]}</Avatar>
+        <Avatar style={{ marginRight: 10 }}>{user.fullName[0]}</Avatar>
         <Link href={`/profile/${user.id}`}>
           <a>
-            <b>{user.fullname}</b>
+            <b>{user.fullName}</b>
           </a>
         </Link>
       </div>

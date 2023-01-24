@@ -11,7 +11,7 @@ interface CommentPostProps {
   user: ResponseUser;
   text: string;
   createdAt: string;
-  currentUserId: number;
+  currentUserId?: number;
   onRemove: (id: number) => void;
 }
 
@@ -46,7 +46,7 @@ export const Comment: React.FC<CommentPostProps> = ({
       }
     }
   };
-
+  console.log(user.id, currentUserId)
   return (
     <div className={styles.comment}>
       <div className={styles.userInfo}>

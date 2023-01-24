@@ -1,15 +1,12 @@
-import React from "react";
+import React from 'react';
 import ArrowRightIcon from "@mui/icons-material/NavigateNext";
-
-import data from "../../data";
-import styles from "./SideComments.module.scss";
-import { CommentItem } from "./CommentItem";
-import clsx from "clsx";
-import { useComments } from "../../hooks/useComments";
+import styles from './SideComments.module.scss';
+import { CommentItem } from './CommentItem';
+import clsx from 'clsx';
+import { useComments } from '../../hooks/useComments';
 
 export const SideComments = () => {
-  // const { comments } = useComments();
-  const comments = data.comments.popular;
+  const { comments } = useComments();
   const [visible, setVisible] = React.useState(true);
 
   const toggleVisible = () => {

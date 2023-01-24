@@ -7,7 +7,7 @@ type UseCommentsProps = {
   comments: CommentItem[];
 };
 
-export const useComments = (postId: number): UseCommentsProps => {
+export const useComments = (postId?: number): UseCommentsProps => {
   const [comments, setComments] = React.useState<CommentItem[]>([]);
   React.useEffect(() => {
     (async () => {
