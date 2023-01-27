@@ -1,3 +1,4 @@
+import moment from "moment";
 import React from "react";
 import { Typography, IconButton, MenuItem, Menu, Avatar } from "@mui/material";
 import MoreIcon from "@mui/icons-material/MoreHorizOutlined";
@@ -52,7 +53,7 @@ export const Comment: React.FC<CommentPostProps> = ({
       <div className={styles.userInfo}>
         <Avatar style={{ marginRight: 10 }}>{user.fullName[0]}</Avatar>
         <b>{user.fullName}</b>
-        <span>{createdAt}</span>
+        <span>{moment(new Date(createdAt)).fromNow()}</span>
       </div>
       <Typography className={styles.text}>{text}</Typography>
       {user.id === currentUserId && (
